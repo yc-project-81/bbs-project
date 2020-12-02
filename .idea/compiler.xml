@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="base-microservice-config3" />
+        <module name="base-microservice-config2" />
+        <module name="base-microservice-turbine" />
+        <module name="base-microservice-dashboard" />
+        <module name="eureka-for-ha-config" />
+        <module name="base-microservice-zuul" />
+        <module name="base-microservice-config" />
+        <module name="base-microservice-security" />
+        <module name="piclib-domain" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="base-microservice-config" target="1.8" />
+      <module name="base-microservice-config2" target="1.8" />
+      <module name="base-microservice-config3" target="1.8" />
+      <module name="base-microservice-dashboard" target="1.8" />
+      <module name="base-microservice-security" target="1.8" />
+      <module name="base-microservice-turbine" target="1.8" />
+      <module name="base-microservice-zuul" target="1.8" />
+      <module name="bbs" target="1.8" />
+      <module name="eureka-for-ha-config" target="1.8" />
+      <module name="piclib-domain" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
