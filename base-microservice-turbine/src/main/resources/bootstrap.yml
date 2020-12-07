@@ -18,7 +18,7 @@ spring:
     stream:
       kafka:
         binder:
-          brokers: 39.99.175.175
+          brokers: 121.196.110.249
 
 ##  访问 config的注册中心eureka服务器，获取config实例列表
 eureka:
