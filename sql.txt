@@ -1,0 +1,45 @@
+CREATE DATABASE TSFX
+ON primary
+(
+	NAME=mydb2_dat,
+	FILENAME='d:\book',
+	SIZE=3MB,
+	MAXSIZE=30MB,
+	FILEGROWTH=1MB
+)
+LOG ON(
+	NAME=mydb2_log,
+	FILENAME='d:\book',
+	SIZE=1MB,
+	MAXSIZE=10MB,
+	FILEGROWTH=1%
+)
+
+use TSFX;
+CREATE TABLE S(
+	SNO	CHAR(9) PRIMARY KEY,
+	SN	VARCHAR(20)	NOT NULL,
+	A	CHAR(2)		NOT NULL,
+	
+);
+CREATE TABLE B(
+	BNO		CHAR(5) PRIMARY KEY,
+	BN  VARCHAR(20)	NOT NULL,
+	p	CHAR(5),
+
+	
+);
+CREATE TABLE L(
+	Lno		CHAR(9),
+	LN	CHAR(5),
+	C           INT,
+	
+);
+
+CREATE TABLE LBS(
+	Lno		CHAR(9),
+	BNO	CHAR(5),
+	SNO         CHAR(5),
+	Q	CHAR(200),
+	
+);
