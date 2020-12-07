@@ -26,7 +26,7 @@
 #    lease-renewal-interval-in-seconds: 30   #设置心跳的时间间隔( default:30s )
 
 server:
-  port: 7103
+  port: 7102
 spring:
   security:
     user:
@@ -36,7 +36,7 @@ spring:
     config:
       server:
         git:     #git服务器配置
-          uri: https://github.com/zhangyingchengqi/picLib-config.git
+          uri: https://github.com/731871903/bbs-configs.git
           label: main
     bus:     # 开启bus消息总线
       trace:
@@ -45,7 +45,7 @@ spring:
     stream:
       kafka:
         binder:
-          brokers: 39.99.175.175
+          brokers: 123.57.89.200
 
   application:
     name: base-microservice-config
