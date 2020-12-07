@@ -6,6 +6,6 @@ import javax.sound.midi.Soundbank;
  */
 public class helloworld {
     public static void main(String[] args) {
-        System.out.println("nibuhaohao");
+        System.out.println("haohao");
     }
 }
