@@ -1,4 +1,4 @@
-# 基于spring cloud的bbs
+# 基于spring cloud的bbs论坛
 项目名称：bbs-project
 
 服务器地址：121.196.110.249
