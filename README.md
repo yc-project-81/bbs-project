@@ -1,4 +1,4 @@
-# 基于spring cloud的bbs论坛
+# 基于spring cloud的bbs
 项目名称：bbs-project
 
 服务器地址：121.196.110.249
@@ -9,6 +9,7 @@
 *****
 代码规范：
 
+测试lwc分支
  1. 代码命名不能以下划线或者美元符号开头或者结尾
  2. 代码命名不能以中文拼音或者中文拼音与英文混合方式
  3. 类名使用UpperCamCamelCase风格，但DO、PO、DTO、VO、BO等除外
