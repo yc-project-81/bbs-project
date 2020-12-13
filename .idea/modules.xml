@@ -10,8 +10,16 @@
       <module fileurl="file://$PROJECT_DIR$/base-microservice-turbine/base-microservice-turbine.iml" filepath="$PROJECT_DIR$/base-microservice-turbine/base-microservice-turbine.iml" />
       <module fileurl="file://$PROJECT_DIR$/base-microservice-zuul/base-microservice-zuul.iml" filepath="$PROJECT_DIR$/base-microservice-zuul/base-microservice-zuul.iml" />
       <module fileurl="file://$PROJECT_DIR$/bbs.iml" filepath="$PROJECT_DIR$/bbs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bbs-restapi/bbs-restapi.iml" filepath="$PROJECT_DIR$/bbs-restapi/bbs-restapi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/board-domain/board-domain.iml" filepath="$PROJECT_DIR$/board-domain/board-domain.iml" />
       <module fileurl="file://$PROJECT_DIR$/eureka-for-ha-config/eureka-for-ha-config.iml" filepath="$PROJECT_DIR$/eureka-for-ha-config/eureka-for-ha-config.iml" />
-      <module fileurl="file://$PROJECT_DIR$/piclib-domain/piclib-domain.iml" filepath="$PROJECT_DIR$/piclib-domain/piclib-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/board-domain/piclib-domain (1).iml" filepath="$PROJECT_DIR$/board-domain/piclib-domain (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/reply-domain/piclib-domain (2).iml" filepath="$PROJECT_DIR$/reply-domain/piclib-domain (2).iml" />
+      <module fileurl="file://$PROJECT_DIR$/topic-domain/piclib-domain (3).iml" filepath="$PROJECT_DIR$/topic-domain/piclib-domain (3).iml" />
+      <module fileurl="file://$PROJECT_DIR$/user-domain/piclib-domain (4).iml" filepath="$PROJECT_DIR$/user-domain/piclib-domain (4).iml" />
+      <module fileurl="file://$PROJECT_DIR$/reply-domain/reply-domain.iml" filepath="$PROJECT_DIR$/reply-domain/reply-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/topic-domain/topic-domain.iml" filepath="$PROJECT_DIR$/topic-domain/topic-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user-domain/user-domain.iml" filepath="$PROJECT_DIR$/user-domain/user-domain.iml" />
     </modules>
   </component>
 </project>

@@ -15,7 +15,11 @@
         <module>base-microservice-dashboard</module>
         <module>base-microservice-turbine</module>
         <module>base-microservice-zuul</module>
-        <module>piclib-domain</module>
+        <module>board-domain</module>
+        <module>topic-domain</module>
+        <module>user-domain</module>
+        <module>reply-domain</module>
+        <module>bbs-restapi</module>
 
 
     </modules>
@@ -69,7 +73,7 @@
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
-                <version>1.0.31</version>
+                <version>1.1.10</version>
             </dependency>
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
