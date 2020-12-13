@@ -2,19 +2,28 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="base-microservice-config3" />
-        <module name="base-microservice-config2" />
-        <module name="base-microservice-turbine" />
         <module name="base-microservice-dashboard" />
         <module name="eureka-for-ha-config" />
-        <module name="base-microservice-zuul" />
         <module name="base-microservice-config" />
         <module name="base-microservice-security" />
-        <module name="piclib-domain" />
+        <module name="bbs-restapi" />
+        <module name="base-microservice-config3" />
+        <module name="piclib-domain (2)" />
+        <module name="base-microservice-config2" />
+        <module name="base-microservice-turbine" />
+        <module name="piclib-domain (3)" />
+        <module name="board-domain" />
+        <module name="piclib-domain (1)" />
+        <module name="user-domain" />
+        <module name="base-microservice-zuul" />
+        <module name="piclib-domain (4)" />
+        <module name="reply-domain" />
+        <module name="topic-domain" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -26,8 +35,17 @@
       <module name="base-microservice-turbine" target="1.8" />
       <module name="base-microservice-zuul" target="1.8" />
       <module name="bbs" target="1.8" />
+      <module name="bbs-restapi" target="1.8" />
+      <module name="board-domain" target="1.8" />
       <module name="eureka-for-ha-config" target="1.8" />
       <module name="piclib-domain" target="1.8" />
+      <module name="piclib-domain (1)" target="1.8" />
+      <module name="piclib-domain (2)" target="1.8" />
+      <module name="piclib-domain (3)" target="1.8" />
+      <module name="piclib-domain (4)" target="1.8" />
+      <module name="reply-domain" target="1.8" />
+      <module name="topic-domain" target="1.8" />
+      <module name="user-domain" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
