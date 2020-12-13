@@ -5,9 +5,7 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
-        <datasource-mapping>
-          <factory-entry name="board-domain" value="aa3fc0f3-cd68-4cf3-8f52-a3f2399bcc20" />
-        </datasource-mapping>
+        <datasource-mapping />
         <naming-strategy-map />
       </configuration>
     </facet>
@@ -18,11 +16,11 @@
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
-    <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/target" />
+    <content url="file://$MODULE_DIR$/../bbs-domain">
+      <sourceFolder url="file://$MODULE_DIR$/../bbs-domain/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../bbs-domain/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../bbs-domain/src/test/java" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/../bbs-domain/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

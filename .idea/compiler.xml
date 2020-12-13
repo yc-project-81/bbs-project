@@ -11,14 +11,19 @@
         <module name="eureka-for-ha-config" />
         <module name="base-microservice-config" />
         <module name="base-microservice-security" />
+        <module name="bbs-restapi" />
         <module name="base-microservice-config3" />
         <module name="piclib-domain (2)" />
         <module name="base-microservice-config2" />
         <module name="base-microservice-turbine" />
         <module name="piclib-domain (3)" />
+        <module name="board-domain" />
         <module name="piclib-domain (1)" />
+        <module name="user-domain" />
         <module name="base-microservice-zuul" />
         <module name="piclib-domain (4)" />
+        <module name="reply-domain" />
+        <module name="topic-domain" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
