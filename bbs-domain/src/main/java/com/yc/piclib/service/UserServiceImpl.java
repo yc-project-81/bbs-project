@@ -59,4 +59,11 @@ public class UserServiceImpl implements UserService {
     }
 
 
+    @Transactional(readOnly = true)
+    @Override
+    public UserDomain findOne(User u){
+        User user = this.picMapper.selectOne(u);
+        UserDomain picDomain = new UserDomain(user.getUid(), user.getUname(), user.getUpass(),user.getHead(),user.getRegtime(), user.getGender());
+        return picDomain;
+    }
 }

@@ -16,9 +16,6 @@
         <module>base-microservice-turbine</module>
         <module>base-microservice-zuul</module>
         <module>bbs-domain</module>
-        <module>topic-domain</module>
-        <module>user-domain</module>
-        <module>reply-domain</module>
         <module>bbs-restapi</module>
 
 

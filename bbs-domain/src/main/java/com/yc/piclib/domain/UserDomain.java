@@ -32,4 +32,8 @@ public class UserDomain extends PageDomain {
         this.regtime = regtime;
         this.gender = gender;
     }
+
+    public UserDomain() {
+
+    }
 }
