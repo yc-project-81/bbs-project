@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<TITLE>论坛</TITLE>
+<Link rel="stylesheet" type="text/css" href="style/style.css" />
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript">
+	$(function() {
+		//访问    所有的版块信息(  ajax )
+		$
+				.ajax({
+					type : "POST",
+					url : "index.action",
+					dataType : "json",
+					success : function(data) {
+						//alert(  data.code+"\t"+ data.obj );
+						if (data.code == 0) {
+							alert("访问首页数据失败...");
+							return;
+						}
+						var topboard = data.obj[0];
+						//$("#topicbody").val('');
+						document.getElementById("topicbody").innerHTML = "";
+						var content = "";
+						
+						
+						for (var i = 0; i < topboard.length; i++) {
+							var tb = topboard[i];
+							content += "<TR class='tr3'><TD colspan=4>"
+									+ tb.boardname + "</TD></TR>";
+
+							//循环子版块
+							//子版块的所在的编号
+							var bid = tb.boardid;
+							var sonboardList = data.obj[bid];
+							if (sonboardList == null
+									|| sonboardList.length <= 0) {
+								continue;
+							}
+							for (var j = 0; j < sonboardList.length; j++) {
+								
+								var sontb = sonboardList[j];
+								content += "<TR class=\"tr3\">	<TD width=\"5%\">&nbsp;</TD><TH align=\"left\">	<IMG src=\"image/board.gif\"><A href=\"topic.action?op=find&boardid="+sontb.boardid+"\">"
+										+ sontb.boardname
+										+ "</A></TH><TD align=\"center\">"+   sontb.total+"  </TD><TH>";	
+										
+								if(   sontb.title==undefined  ){
+									content+="查无子贴";
+								}else{
+									content+="<SPAN><A href=\"topic.action?op=detail&topicid="+   sontb.topicid   +"&boardid="+     sontb.boardid  +"\">"+sontb.title+" </A></SPAN><BR/><SPAN>"+sontb.uname+"</SPAN><SPAN class=\"gray\">[ "+sontb.modifytime+" ]</SPAN>";  
+								}
+							    content+="</TH></TR>";
+							}
+						}
+						//$("#topicbody").val(    content );
+						document.getElementById("topicbody").innerHTML = content;
+					}
+				});
+	});
+</script>
+
+
+</HEAD>
+
+<BODY>
+
+	<DIV>
+		<IMG src="image/logo.gif">
+	</DIV>
+	<!--      用户信息、登录、注册        -->
+
+	<DIV id="logindiv" class="h">
+		
+	</DIV>
+
+	<!--      主体        -->
+	<DIV class="t">
+		<TABLE cellSpacing="0" cellPadding="0" width="100%">
+			<TR class="tr2" align="center">
+				<TD colSpan="2">论坛</TD>
+				<TD style="WIDTH: 10%;">主题</TD>
+				<TD style="WIDTH: 30%">最后发表</TD>
+			</TR>
+
+
+			<tbody id="topicbody">
+
+
+
+
+
+
+			</tbody>
+
+
+
+		</TABLE>
+	</DIV>
+
+	<BR />
+	<CENTER class="gray">源辰信息</CENTER>
+</BODY>
+</HTML>
