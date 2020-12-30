@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<TITLE>论坛--登录</TITLE>
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<Link rel="stylesheet" type="text/css" href="style/style.css"/>
+
+<script type="text/javascript" src="js/login.js"></script>
+
+<script type="text/javascript">
+	//当页面加载完毕，给regbtn绑定一个点击事件
+	$(function(){
+		console.info("aaaaa");
+		//serialize()作用将表单中所有的参数拼接起来
+		$("#loginbtn").click(function(){
+			$.ajax({
+				type:"POST",
+				url:"/bbs/login",
+				data:$("#loginForm").serialize(),
+				dataType:"json",
+				success:function(data){
+					//alert(eval(data).code);
+					if(data.code=='1'){
+						alert("登录成功");
+						window.location="index.html";
+					}else{
+						alert("登录失败，信息如下："+data.msg);
+					}
+				}
+			});
+		});
+	});
+</script>
+
+</HEAD>
+
+<BODY>
+<DIV>
+	<IMG src="image/logo.gif">
+</DIV>
+<!--      用户信息、登录、注册        -->
+
+	<DIV id="logindiv" class="h">
+	</DIV>
+
+
+<BR/>
+<!--      导航        -->
+<DIV>
+	&gt;&gt;<B><a href="index.html">论坛首页</a></B>
+</DIV>
+<!--      用户登录表单        -->
+<DIV class="t" style="MARGIN-TOP: 15px" align="center">
+	<FORM name="loginForm" id="loginForm" action="/bbs/login" method="post">
+		<input type="hidden" name="op" value="login"/>
+		<br/>用户名 &nbsp;<INPUT class="input" tabIndex="1"  type="text"      maxLength="20" size="35" name="uname">
+		<br/>密　码 &nbsp;<INPUT class="input" tabIndex="2"  type="password"  maxLength="20" size="40" name="upass">
+<!--		<br/>验&nbsp;证&nbsp;码 &nbsp;	<img alt="验证码" src="code.action"> -->
+<!--		<INPUT class="input" tabIndex="1" type="text" maxLength="20" size="35" name="code">-->
+		<br/><INPUT class="btn"  tabIndex="6"  type="button" id="loginbtn" value="登 录">
+	</FORM>
+</DIV>
+<!--      声明        -->
+<BR/>
+<CENTER class="gray">源辰信息</CENTER>
+</BODY>
+</HTML>
