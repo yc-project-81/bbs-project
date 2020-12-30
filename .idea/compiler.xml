@@ -11,9 +11,11 @@
         <module name="base-microservice-config2" />
         <module name="base-microservice-turbine" />
         <module name="base-microservice-dashboard" />
+        <module name="bbs-web" />
         <module name="eureka-for-ha-config" />
         <module name="base-microservice-zuul" />
         <module name="base-microservice-config" />
+        <module name="bbs-client-zuul" />
         <module name="base-microservice-security" />
         <module name="bbs-restapi" />
         <module name="bbs-domain" />
@@ -28,8 +30,10 @@
       <module name="base-microservice-turbine" target="1.8" />
       <module name="base-microservice-zuul" target="1.8" />
       <module name="bbs" target="1.8" />
+      <module name="bbs-client-zuul" target="1.8" />
       <module name="bbs-domain" target="1.8" />
       <module name="bbs-restapi" target="1.8" />
+      <module name="bbs-web" target="1.8" />
       <module name="eureka-for-ha-config" target="1.8" />
       <module name="piclib-domain" target="1.8" />
     </bytecodeTargetLevel>

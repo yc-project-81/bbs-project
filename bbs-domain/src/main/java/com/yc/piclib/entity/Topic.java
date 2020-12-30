@@ -18,5 +18,4 @@ public class Topic {
     private Timestamp modifytime;
     private Integer uid;
     private Integer boardid;
-
 }

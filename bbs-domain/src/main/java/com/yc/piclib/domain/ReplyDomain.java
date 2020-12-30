@@ -33,4 +33,8 @@ public class ReplyDomain extends PageDomain {
         this.uid = uid;
         this.topicid = topicid;
     }
+
+    public ReplyDomain() {
+
+    }
 }

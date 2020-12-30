@@ -17,7 +17,8 @@
         <module>base-microservice-zuul</module>
         <module>bbs-domain</module>
         <module>bbs-restapi</module>
-
+        <module>bbs-client-zuul</module>
+        <module>bbs-web</module>
 
     </modules>
     <name>mis-parent</name>

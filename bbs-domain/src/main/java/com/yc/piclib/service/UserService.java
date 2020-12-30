@@ -12,5 +12,12 @@ public interface UserService {
 
     public PageDomain<UserDomain> listByPage(UserDomain userDomain);
 
+    /**
+     * 创建新的账号
+     *
+     * @param userDomain
+     */
+    public void save(UserDomain userDomain);
+
     public UserDomain findOne(User u);
 }

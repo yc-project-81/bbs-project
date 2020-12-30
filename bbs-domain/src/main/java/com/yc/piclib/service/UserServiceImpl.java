@@ -58,6 +58,17 @@ public class UserServiceImpl implements UserService {
         return pageDomain;
     }
 
+    @Override
+    public void save(UserDomain userDomain) {
+        User user=new User();
+        user.setUname(userDomain.getUname());
+        user.setUpass(userDomain.getUpass());
+        user.setHead(userDomain.getHead());
+        user.setGender(userDomain.getGender());
+        this.picMapper.insert(user);
+        userDomain.setUid(user.getUid());
+    }
+
 
     @Transactional(readOnly = true)
     @Override

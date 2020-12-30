@@ -10,8 +10,10 @@
       <module fileurl="file://$PROJECT_DIR$/base-microservice-turbine/base-microservice-turbine.iml" filepath="$PROJECT_DIR$/base-microservice-turbine/base-microservice-turbine.iml" />
       <module fileurl="file://$PROJECT_DIR$/base-microservice-zuul/base-microservice-zuul.iml" filepath="$PROJECT_DIR$/base-microservice-zuul/base-microservice-zuul.iml" />
       <module fileurl="file://$PROJECT_DIR$/bbs.iml" filepath="$PROJECT_DIR$/bbs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bbs-client-zuul/bbs-client-zuul.iml" filepath="$PROJECT_DIR$/bbs-client-zuul/bbs-client-zuul.iml" />
       <module fileurl="file://$PROJECT_DIR$/bbs-domain/bbs-domain.iml" filepath="$PROJECT_DIR$/bbs-domain/bbs-domain.iml" />
       <module fileurl="file://$PROJECT_DIR$/bbs-restapi/bbs-restapi.iml" filepath="$PROJECT_DIR$/bbs-restapi/bbs-restapi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bbs-web/bbs-web.iml" filepath="$PROJECT_DIR$/bbs-web/bbs-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/eureka-for-ha-config/eureka-for-ha-config.iml" filepath="$PROJECT_DIR$/eureka-for-ha-config/eureka-for-ha-config.iml" />
     </modules>
   </component>

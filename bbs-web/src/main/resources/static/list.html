@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<TITLE>主题论坛</TITLE>
+	<Link rel="stylesheet" type="text/css" href="style/style.css" />
+</HEAD>
+
+<BODY>
+
+<DIV>
+	<IMG src="image/logo.gif">
+</DIV>
+<!--      用户信息、登录、注册        -->
+
+<DIV class="h">
+	　<a href="login.html">登录</a>
+	&nbsp;| &nbsp; <A href="reg.html">注册</A> |
+</DIV>
+
+<!--      主体        -->
+<DIV class="t" >
+	<TABLE cellSpacing="0" cellPadding="0" width="100%">
+		<TR class="tr2" align="center">
+			<TD colSpan="2">主题</TD>
+			<TD style="WIDTH: 30%">类别</TD>
+		</TR>
+
+		<TR class="tr3" v-for="pic in findlist">
+			<TD width="5%">&nbsp;</TD>
+			<TH align="left">
+				<IMG src="image/board.gif">
+				<A :href="'detail.html#'+pic.topicid"><span>{{pic.title}}</span></A>
+			</TH>
+
+			<TH>
+				<SPAN>
+					{{pic.boardid}}
+				</SPAN>
+
+			</TH>
+		</TR>
+	</TABLE>
+</DIV>
+<script src="js/vue.js"></script>
+<script src="js/axios.js"></script>
+<script>
+	var vue1=new Vue({
+		el:".t",
+		data:{
+			findlist:[],
+		},
+		created:function(){
+			var id=location.hash.substring(1);
+			axios.post("/bbs/"+id)
+					.then((res)=>{
+						console.info(res.data)
+						this.findlist=res.data.data;
+					});
+
+		},
+
+	});
+
+</script>
+<BR/>
+<CENTER class="gray">源辰信息</CENTER>
+</BODY>
+</HTML>
+

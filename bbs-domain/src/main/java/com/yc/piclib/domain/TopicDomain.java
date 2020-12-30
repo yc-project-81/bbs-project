@@ -24,7 +24,7 @@ public class TopicDomain extends PageDomain {
     private String extension;
     private String realPath;
 
-    public TopicDomain(Integer topicid, String title, String content, Timestamp publishtime, Timestamp modifytime, Integer pUid, Integer uid, Integer boardid) {
+    public TopicDomain(Integer topicid, String title, String content, Timestamp publishtime, Timestamp modifytime, Integer uid, Integer boardid) {
         this.topicid = topicid;
         this.title = title;
         this.content = content;
@@ -32,5 +32,13 @@ public class TopicDomain extends PageDomain {
         this.modifytime = modifytime;
         this.uid = uid;
         this.boardid = boardid;
+    }
+
+    public TopicDomain() {
+
+    }
+
+    public TopicDomain(Integer topicid) {
+        this.topicid = topicid;
     }
 }

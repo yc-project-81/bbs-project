@@ -33,7 +33,17 @@ public class UserDomain extends PageDomain {
         this.gender = gender;
     }
 
-    public UserDomain() {
+
+    public UserDomain(String uname, String upass, String head, Integer gender) {
+        this.uname = uname;
+        this.upass = upass;
+        this.head = head;
+        this.gender = gender;
+    }
+
+    public UserDomain(){
 
     }
+
+
 }
