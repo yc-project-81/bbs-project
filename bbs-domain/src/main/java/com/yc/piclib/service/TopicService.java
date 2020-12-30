@@ -10,4 +10,8 @@ public interface TopicService {
     public List<TopicDomain> list();
 
     public PageDomain<TopicDomain> listByPage(TopicDomain topicDomain);
+
+    public void save(TopicDomain topicDomain);
+
+    public void delete(Integer id);
 }

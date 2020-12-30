@@ -1,8 +1,10 @@
 package com.yc.piclib.service;
 
 import com.yc.piclib.dao.impl.TopicMapper;
+import com.yc.piclib.domain.BoardDomain;
 import com.yc.piclib.domain.PageDomain;
 import com.yc.piclib.domain.TopicDomain;
+import com.yc.piclib.entity.Board;
 import com.yc.piclib.entity.Topic;
 import com.yc.piclib.util.CommonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ public class TopicServiceImpl implements TopicService {
 
     @Autowired(required = false)
     private TopicMapper picMapper;
+
 
     @Transactional(readOnly = true)
     @Override
@@ -59,4 +62,26 @@ public class TopicServiceImpl implements TopicService {
     }
 
 
+    @Override
+    public void save(TopicDomain topicDomain) {
+        Topic topic = new Topic();
+        topic.setTopicid(topicDomain.getTopicid());
+        topic.setTitle(topicDomain.getTitle());
+        topic.setContent(topicDomain.getContent());
+        topic.setPublishtime(topicDomain.getPublishtime());
+        topic.setModifytime(topicDomain.getModifytime());
+        topic.setUid(topicDomain.getUid());
+        topic.setBoardid(topicDomain.getBoardid());
+        this.picMapper.insert(topic);
+        // 在这里  mybatis完成了两步操作: 1. insert   2. select 到最新的id后，存到pic中
+        //pic中的id已经获取到
+        //关键:
+        topicDomain.setBoardid(topic.getBoardid());
+    }
+
+
+    @Override
+    public void delete(Integer id) {
+        this.picMapper.deleteByPrimaryKey(id);
+    }
 }

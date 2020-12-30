@@ -28,10 +28,10 @@
 server:
   port: 7101
 spring:
-  security:
-    user:
-      name: admin
-      password: a
+#  security:
+#    user:
+#      name: admin
+#      password: a
   cloud:
     config:
       server:

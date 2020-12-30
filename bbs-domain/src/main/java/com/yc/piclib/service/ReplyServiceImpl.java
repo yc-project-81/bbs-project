@@ -58,5 +58,26 @@ public class ReplyServiceImpl implements ReplyService {
         return pageDomain;
     }
 
+    @Override
+    public void reply(ReplyDomain replyDomain){
+    Reply reply=new Reply();
+        reply.setTopicid(replyDomain.getTopicid());
+        reply.setContent(replyDomain.getContent());
+        reply.setModifytime(replyDomain.getModifytime());
+        reply.setPublishtime(replyDomain.getPublishtime());
+        reply.setReplyid(replyDomain.getReplyid());
+        reply.setTitle(replyDomain.getTitle());
+        reply.setUid(replyDomain.getUid());
+        this.picMapper.insert(reply);
+
+        replyDomain.setReplyid(reply.getReplyid());
+
+    }
+
+    @Override
+    public void delete(Integer id){
+        this.picMapper.deleteByPrimaryKey(id);
+
+    }
 
 }
