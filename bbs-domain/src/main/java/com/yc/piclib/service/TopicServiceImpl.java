@@ -65,11 +65,9 @@ public class TopicServiceImpl implements TopicService {
     @Override
     public void save(TopicDomain topicDomain) {
         Topic topic = new Topic();
-        topic.setTopicid(topicDomain.getTopicid());
         topic.setTitle(topicDomain.getTitle());
         topic.setContent(topicDomain.getContent());
         topic.setPublishtime(topicDomain.getPublishtime());
-        topic.setModifytime(topicDomain.getModifytime());
         topic.setUid(topicDomain.getUid());
         topic.setBoardid(topicDomain.getBoardid());
         this.picMapper.insert(topic);

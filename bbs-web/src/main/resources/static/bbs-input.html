@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>博客发布</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-  <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css">
-  <link rel="stylesheet" href="../../static/css/me.css">
+  <link rel="stylesheet" href="lib/editormd/css/editormd.min.css">
+  <link rel="stylesheet" href="css/me.css">
   <Link rel="stylesheet" type="text/css" href="style/style.css"/>
+  <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+  <script type="text/javascript" src="js/vue.min.js"></script>
+  <script type="text/javascript" src="js/axios.js"></script>
 </head>
 <body>
 
@@ -81,7 +84,7 @@
           </div>
         </div>
         <div class="required field">
-          <textarea name="description" th:text="*{description}" placeholder="博客描述..." maxlength="200"></textarea>
+          <textarea name="description" v-model="content" placeholder="文章内容..." maxlength="200"></textarea>
         </div>
         <div class="ui error message"></div>
         <div class="ui right aligned container">
@@ -89,45 +92,43 @@
           <button type="button" @click="push()" id="publish-btn" class="ui teal button">发布</button>
         </div>
       </form>
-    </div>
-  </div>
-<script>
-  var vm = new Vue({
-    el: '#blog-form',  //定位到某个标签区域
-    data: {
-      topicid:1,
-      title:"",
-      content:"",
-      uid:1,
-      boardid:1
-    },
-    mounted() {
-      //mounted:在模板渲染成html后调用，通常是初始化页面完成后，再对html的dom节点进行一些需要的操作。
-      this.dataListFn(1);	//默认为第一页
-    },
-    methods: {  //相当于js中定义函数
-        push(){
+      <script>
+        var vm = new Vue({
+          el: '#blog-form',  //定位到某个标签区域
+          data: {
+            topicid:1,
+            title:"",
+            content:"",
+            uid:1,
+            boardid:1
+          },
 
-            axios({
-              url:"product.do?os=login",
-              params:{
-                username:this.username,
-                password:this.password,
-                vcode:this.vcode
-              }
-            }).then(res=>{
-              alert(res.data);
-              if(res.data=='登录成功'){
-                location.href="index.html";
-              }
-            })
+          methods: {  //相当于js中定义函数
+            push(){
+
+              axios({
+                url:"/bbs/push",
+                params:{
+                  topicid: this.topicid,
+                  title:this.title,
+                  content:this.content
+                }
+              }).then(res=>{
+
+
+                  alert("发布成功");
+
+              })
+            }
+
           }
 
-    }
 
+        });
+      </script>
+    </div>
+  </div>
 
-  });
-</script>
 
   <br>
   <br>

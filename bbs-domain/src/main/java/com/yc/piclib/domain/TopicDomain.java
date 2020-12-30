@@ -9,7 +9,7 @@ import java.sql.Timestamp;
  */
 @Data
 public class TopicDomain extends PageDomain {
-    private Integer topicid;   //注意: 对应的数据表中的字段名叫 book_id
+    private int topicid;   //注意: 对应的数据表中的字段名叫 book_id
     private String title;
     private String content;
     private String publishtime;
