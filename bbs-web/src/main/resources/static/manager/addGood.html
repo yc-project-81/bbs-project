@@ -1,0 +1,77 @@
+<style>
+ .yc_add li{
+ 	width:400px;
+ 	margin-top:20px;
+ }
+ 
+ .yc_add li label{
+ 	display:inline-block;
+ 	width:10=50px;
+ 	text-align:right;
+ }
+ 
+ .yc_add li input{
+ 	width:200px;
+ }
+</style>
+<div class="yc_good">
+	<form id="yc_addgood">
+		<ul class="yc_add">
+			<li><label>商品类型:</label><input id="yc_type" class="easyui-combobox"></li>
+			<li><label>商品名称:</label><input id="gname" class="easyui-textbox" data-options="iconCls:'icon-search'"></li>
+			<li><label>商品价格:</label><input id="price" class="easyui-numberbox" data-options="min:0,precision:2"></li>
+			<li><label>商品单位:</label><input id="unit" class="easyui-textbox"></li>
+			<li><label>商品净重:</label><input id="weight" class="easyui-textbox"></li>
+			<li><label>保质期:</label><input id="qperied" class="easyui-datebox"></li>
+			<li><label>商品库存:</label><input id="balance" class="easyui-numberbox" data-options="min:0"></li>
+			<li><label>商品图片:</label><input id="pics" type="file" name="pics"></li>
+			<li><label>商品简介:</label><textarea id="intro"></textarea></li>
+			<li><label>商品描述:</label><textarea id="descr"></textarea></li>
+			<li><label></label><a class="easyui-linkbutton" href="javascript:add()">添加商品</a></li>
+		</ul>
+	</form>
+</div>
+<!-- 引入ajaxFileUpload -->
+<script type="text/javascript" src="../../js/ajaxfileupload.js"></script>
+<script>
+//加载数据   获取商品类型   back/manager/xx
+$('#yc_type').combobox({
+	url:'../../goodsType.action?op=find',
+	valueField:'tno',
+	textField:'tname'
+});
+
+//添加商品
+function add(){
+	//获取所有元素值
+	var tno=$('#yc_type').val();
+	var gname=$('#gname').val();
+	var price=$('#price').val();
+	var unit=$('#unit').val();
+	var weight=$('#weight').val();
+	var qperied=$('#qperied').val();
+	var balance=$('#balance').val();
+	var descr=$('#descr').val();
+	var intro=$('#intro').val();
+	$.ajaxFileUpload({
+		url:'../goodFileUpload.action',
+		secureuri:false,
+		fileElementId:'pics',
+		dataType:'json',
+		data:{tno:tno,gname:gname,price:price,unit:unit,weight:weight,qperied:qperied,balance:balance,descr:descr,intro:intro},
+		success:function(data){
+			if(data>0){
+				//清空文本框
+				$.messager.show({
+					title:'温馨提示',
+					msg:'商品添加成功',
+					timeout:5000,
+					showType:'slide'
+				});
+			}else{
+				$.messager.alert('警告','商品添加失败');
+			}
+		}
+	});
+}
+</script>

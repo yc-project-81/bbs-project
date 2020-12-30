@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>BBS-后台登陆</title>
+<link rel="stylesheet" href="css/login.css">
+<link rel="short icon" href="images/logo1.png" type="image/x-icon">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+
+	$(function(){
+		console.info("aaaaa");
+		//serialize()作用将表单中所有的参数拼接起来
+		$("#sub_btn").click(function(){
+			$.ajax({
+				type:"POST",
+				url:"/bbs/login",
+				data:$("#myform").serialize(),
+				dataType:"json",
+				success:function(data){
+					//alert(eval(data).code);
+					if(data.code=='1'){
+						if(data.data=='0'){
+							alert("登录成功,欢迎您尊敬的管理员");
+							window.location="manager/index.html";
+						}else{
+							alert("登录成功");
+							window.location="index.html";
+						}
+					}else{
+						alert("登录失败，信息如下："+data.msg);
+					}
+				}
+			});
+		});
+	});
+	 
+
+</script>
+</head>
+<body>
+	<div id="login_top">
+		<div id="welcome">
+			欢迎使用BBS后台管理系统
+		</div>
+		<div id="back">
+			<a href="index.html">返回首页</a>&nbsp;&nbsp; | &nbsp;&nbsp;
+			<a href="#">帮助</a>
+		</div>
+	</div>
+	<div id="login_center">
+		<div id="login_area">
+			<div id="login_form">
+				<form action="/bbs/login" method="post" id="myform" name="myform">
+					<div id="login_tip">
+						用户登录&nbsp;&nbsp;UserLogin
+					</div>
+					<div><input type="text" class="username" id="uname" name="uname" placeholder="请输入账号..."></div>
+					<div><input type="password" class="pwd" id="upass" name="upass" placeholder="请输入密码..."></div>
+					<div >
+						<input type="button" tabIndex="6"  id="sub_btn" value="登&nbsp;&nbsp;录">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div id="login_bottom">
+		<label style="color:#FFF"><a class="copy" href="http://www.hyycinfo.com">衡阳市源辰信息科技有限公司 </a>&copy; 版权所有</label>
+	</div>
+</body>
+</html>

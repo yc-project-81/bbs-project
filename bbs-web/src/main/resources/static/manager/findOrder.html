@@ -1,0 +1,39 @@
+<br/>
+
+<div>
+
+<table id="yc_show_orderInfo">
+</div>
+<script type="text/javascript">
+	//加载数据
+	$('#yc_show_orderInfo').datagrid({
+		//url:'../orderInfo.action?op=find', 查找全部
+		url:"../../order.action?op=findPage",
+		pagination:true,//分页工具条
+		pageList:[1,3,7,14,20],	//每个显示条数的数组设置
+		pageSize:3,
+		toolbar:[
+		         {
+		        	 iconCls:'icon-reload',
+		        	 handler:function(){
+		        		 $('#yc_show_orderInfo').datagrid('load');
+		        	 }
+		         },'-', {iconCls:'icon-edit',
+		        		 handler:function(){
+		        			 alert('编辑');
+		        		 }
+		         		}
+		         ],
+		columns:[[
+		          {field:'ono',title:'编号',width:'5%',align:'center'},
+		          {field:'odate',title:'下单日期',width:'10%',align:'center'},
+		          {field:'ano',title:'收货地址',width:'10%',align:'center'},
+		          {field:'sdate',title:'发货日期',width:'10%',align:'center'},
+		          {field:'rdate',title:'收货日期',width:'10%',align:'center'},
+		          {field:'status',title:'订单状态',width:'10%',align:'center'},
+		          {field:'price',title:'订单总额',width:'10%',align:'center'},
+		          {field:'invoice',title:'是否已开发票',width:'5%',align:'center'},
+		          ]]
+	});
+</script>
+</table>

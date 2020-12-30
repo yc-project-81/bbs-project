@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/easyui.css" />
+		<link rel="stylesheet" href="../css/icon.css" />
+		<link rel="stylesheet" href="../css/index.css" />
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../js/jquery.easyui.min.js" ></script>
+		<!--语言支持  简体中文-->
+		<script type="text/javascript" src="../js/easyui-lang-zh_CN.js" ></script>
+	</head>
+	<!--整个页面布局  body上加上布局组件-->
+	<body class="easyui-layout">
+		<div data-options="region:'north'" style="height:83px">
+			<div class="header">
+				<p>BBS后台管理</p>
+				<ul>
+					<li><a class="easyui-linkbutton" href="javascript:;" data-options="plain:true,iconCls:'icon-edit'">修改密码</a></li>
+					<li><a class="easyui-linkbutton" href="javascript:;" data-options="plain:true,iconCls:'icon-back'">安全退出</a></li>
+				</ul>
+			</div>
+		</div>
+		<div data-options="region:'south'" style="height:50px">
+			<p>衡阳市源辰信息科技有限公司</p>
+		</div>
+		<!--菜单管理-->
+		<div data-options="region:'west'" title="菜单管理" style="width:200px">
+			<div id="menu" class="easyui-accordion" data-options="fit:true,border:false">
+				<div title="评论管理" data-options="iconCls:'icon-ok'">
+					<li><a class="easyui-linkbutton btn" href="findGood.html" data-options="plain:true,fit:true">浏览评价信息</a></li>
+				</div>
+				<div title="用户管理" data-options="iconCls:'icon-man'">
+					<li><a class="easyui-linkbutton btn" href="findMember.html" data-options="plain:true,fit:true">浏览用户信息</a></li>
+				</div>
+			</div>
+		</div>
+		<div data-options="region:'center'">
+			<div id="show_center" class="easyui-tabs" data-options="fit:true">
+			</div>
+		</div>
+		<script>
+			$(function(){
+				//页面加载完成加载欢迎页面的选项卡
+				$('#show_center').tabs('add',{
+					title:'源辰',
+					href:'welcome.html',
+					fit:true
+				});
+			});
+			
+			//菜单项添加点击事件   获取href值，center中显示
+			$('#menu .btn').click(function(){
+				var href=$(this).attr('href');
+				var name=$(this).text();//名称
+				//判断选项卡是否存在
+				if($('#show_center').tabs('exists',name)){
+					$('#show_center').tabs('select',name);//选中
+				}else{
+					//新建
+					$('#show_center').tabs('add',{
+						title:name,
+						href:href,
+						fit:true,
+						tools:[
+							{
+								iconCls:'icon-clear',
+								handler:function(){
+									//关闭该选项卡
+									$('#show_center').tabs('close',name);
+								}
+							}
+						]
+					});
+				}
+				return false;//阻止页面跳转
+			});
+		</script>
+	</body>
+</html>

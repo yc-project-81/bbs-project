@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<TITLE>论坛管理</TITLE>
+	<Link rel="stylesheet" type="text/css" href="../style/style.css" />
+</HEAD>
+
+<BODY>
+
+
+<!--      主体        -->
+<DIV class="t" >
+	<TABLE cellSpacing="0" cellPadding="0" width="100%">
+		<TR class="tr2" align="center">
+			<td width="5%">标题编号</td>
+			<TD width="20%" >标题</TD>
+			<TD width="25%">内容</TD>
+			<TD width="20%">首次发布时间</TD>
+			<TD width="20%">最新发布时间</TD>
+			<td width="5%">用户编号</td>
+			<TD width="5%" style="WIDTH: 30%">类别</TD>
+		</TR>
+
+		<TR class="tr3" v-for="pic in findlist">
+			<TD >&nbsp;{{pic.topicid}}</TD>
+			<TH align="left">
+				<IMG src="../image/board.gif">
+				<span>{{pic.title}}</span></A>
+			</TH>
+			<TH>
+				<span v-html="pic.content"></span>
+			</TH>
+			<TH>
+				<SPAN>
+					{{pic.publishtime}}
+				</SPAN>
+
+			</TH>
+			<TH>
+				<SPAN>
+					{{pic.modifytime}}
+				</SPAN>
+
+			</TH>
+			<TH>
+				<SPAN>
+					{{pic.uid}}
+				</SPAN>
+
+			</TH>
+			<TH>
+				<SPAN>
+					{{pic.boardid}}
+				</SPAN>
+
+			</TH>
+		</TR>
+	</TABLE>
+</DIV>
+<script src="../js/vue.js"></script>
+<script src="../js/axios.js"></script>
+<script>
+	var vue1=new Vue({
+		el:".t",
+		data:{
+			findlist:[],
+		},
+		created:function(){
+			axios.post("/bbs/topic/findAll")
+					.then((res)=>{
+						console.info(res.data)
+						this.findlist=res.data.data;
+					});
+
+		},
+
+	});
+
+</script>
+<BR/>
+<CENTER class="gray">源辰信息</CENTER>
+</BODY>
+</HTML>

@@ -14,7 +14,7 @@
 <!--      用户信息、登录、注册        -->
 
 	<DIV class="h">
-		您尚未　<a href="login.html">登录</a>
+		　<a href="login.html">登录</a>
 		&nbsp;| &nbsp; <A href="reg.html">注册</A> |
 	</DIV>
 
@@ -47,12 +47,12 @@
 					注册:2007-07-27<BR/>
 				</TH>
 				<TH>
-					<H4>{{findlist.title}}</H4>
-					<DIV>{{findlist.content}}}</DIV>
+					<H4 v-html="findlist.title"></H4>
+					<DIV v-html="findlist.content"></DIV>
 					<DIV class="tipad gray">
-						发表：[{{findlist.publishtime}}] &nbsp;
-						最后修改:[{{findlist.modifytime}}]
-						<A :href="'post.html#'+pic.topicid">[修改]</A>
+						发表[<span>{{findlist.publishtime}} &nbsp;</span>]
+						最后修改:[<span>{{findlist.modifytime}}</span>]
+						<A :href="'post.html#'+findlist.topicid">[修改]</A>
 					</DIV>
 				</TH>
 			</TR>

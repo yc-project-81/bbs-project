@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="yc_admin">
+			<div>
+				用户名:<input type="text" name="aname" />
+				<a class="easyui-linkbutton" data-options="plain:true" href="javascript:find()">查询</a>
+			</div>
+			<table id="yc_show_admin"></table>
+		</div>
+		<script type="text/javascript">
+			$('#yc_show_admin').datagrid({
+				url:'../admin.action?op=findPage',
+				pagination:true,//分页工具条
+				pageList:[1,3,7,14,20],//每个显示条数的数组设置
+				pageSize:3,
+				toolbar:[
+					{iconCls:'icon-reload',
+						handler:function(){
+							$('#yc_show_admin').datagrid('load');
+						}
+					},'-',{iconCls:'icon-edit',
+						handler:function(){
+							alert('编辑');
+						}}],
+				columns:[[
+					{field:'aid',title:'管理员编号',width:'20%',align:'center'},
+					{field:'aname',title:'管理员名称',width:'20%',align:'center'},
+					{field:'pwd',title:'密码',width:'20%',formatter:function(value,row,index){
+						return '***********************';
+					}},
+					{field:'tel',title:'手机号',width:'20%',align:'center'},
+					{field:'aa',title:'操作',width:'20%',align:'center',formatter:function(value,row,index){
+						return '<a href="javascript:resetPwd('+row.aid+')">重置密码</a>';
+					}}
+				]]
+			});
+			
+			//重置密码
+			function resetPwd(aid){
+				alert(aid);
+			}
+			
+			function find(){
+				var name=$('.yc_admin input[name="aname"]').val();
+				console.log(name);
+				$('#yc_show_admin').datagrid('reload',{aname:name});
+			}
+		</script>
+	</body>
+</html>

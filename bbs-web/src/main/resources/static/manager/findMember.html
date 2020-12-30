@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<TITLE>用户管理</TITLE>
+	<Link rel="stylesheet" type="text/css" href="../style/style.css" />
+</HEAD>
+
+<BODY>
+
+
+<!--      主体        -->
+<DIV class="t" >
+	<TABLE cellSpacing="0" cellPadding="0" width="100%">
+		<TR class="tr2" align="center">
+			<td width="5%">用户编号</td>
+			<TD width="15%" >用户名</TD>
+			<td width="30%">用户头像</td>
+			<TD width="20%">用户注册时间</TD>
+			<TD width="10%">用户性别</TD>
+		</TR>
+
+		<TR class="tr3" v-for="pic in findlist">
+			<TD >{{pic.uid}}</TD>
+			<TH align="left">
+				<span>{{pic.uname}}</span></A>
+			</TH>
+			<TH>
+				<IMG :src="'../image/head/'+pic.head">
+			</TH>
+			<TH>
+				<SPAN>
+					{{pic.regtime}}
+				</SPAN>
+
+			</TH>
+			<TH>
+				<SPAN>
+					{{pic.gender}}
+				</SPAN>
+
+			</TH>
+		</TR>
+	</TABLE>
+</DIV>
+<script src="../js/vue.js"></script>
+<script src="../js/axios.js"></script>
+<script>
+	var vue1=new Vue({
+		el:".t",
+		data:{
+			findlist:[],
+		},
+		created:function(){
+			axios.post("/bbs/user/findAll")
+					.then((res)=>{
+						console.info(res.data)
+						this.findlist=res.data.data;
+					});
+
+		},
+
+	});
+
+</script>
+<BR/>
+<CENTER class="gray">源辰信息</CENTER>
+</BODY>
+</HTML>
