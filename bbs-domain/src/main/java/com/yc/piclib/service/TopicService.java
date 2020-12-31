@@ -24,4 +24,9 @@ public interface TopicService {
      * @return
      */
     public TopicDomain find(Integer id);
+
+    public TopicDomain find1(Integer id);
+
+
+    public void updata(TopicDomain topicDomain,Integer topicid);
 }

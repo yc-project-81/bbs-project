@@ -69,7 +69,6 @@ public class TopicServiceImpl implements TopicService {
         topic.setTitle(topicDomain.getTitle());
         topic.setContent(topicDomain.getContent());
         topic.setPublishtime(topicDomain.getPublishtime());
-        topic.setModifytime(topicDomain.getModifytime());
         topic.setUid(topicDomain.getUid());
         topic.setBoardid(topicDomain.getBoardid());
         this.picMapper.insert(topic);
@@ -100,6 +99,13 @@ public class TopicServiceImpl implements TopicService {
         }
         return r;
     }
+    @Transactional(readOnly = true)
+    @Override
+    public TopicDomain find1(Integer id) {
+        Topic p = this.picMapper.selectByPrimaryKey(id);
+        TopicDomain topicDomain = new TopicDomain(p.getTopicid(),p.getTitle(),p.getContent(),p.getPublishtime(),p.getModifytime(),p.getUid(),p.getBoardid());
+        return topicDomain;
+    }
 
     @Transactional(readOnly = true)
     @Override
@@ -107,5 +113,18 @@ public class TopicServiceImpl implements TopicService {
         Topic p = this.picMapper.selectByPrimaryKey(id);
         TopicDomain topicDomain = new TopicDomain(p.getTopicid(),p.getTitle(),p.getContent(),p.getPublishtime(),p.getModifytime(),p.getUid(),p.getBoardid());
         return topicDomain;
+    }
+
+    @Override
+    public void updata(TopicDomain topicDomain,Integer topicid) {
+        Topic topic = new Topic();
+        Example example = new Example(Topic.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("topicid",topicid);
+        topic.setTitle(topicDomain.getTitle());
+        topic.setContent(topicDomain.getContent());
+        topic.setUid(topicDomain.getUid());
+        topic.setBoardid(topicDomain.getBoardid());
+        this.picMapper.updateByExampleSelective(topic,example);
     }
 }

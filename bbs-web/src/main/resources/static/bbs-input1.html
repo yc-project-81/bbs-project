@@ -86,7 +86,7 @@
           </div>
         </div>
         <div class="required field">
-          <textarea name="description" v-model="content" placeholder="文章内容..." maxlength="200"></textarea>
+          <textarea name="description" v-model="content" placeholder="文章内容..."  maxlength="200">{{content}}</textarea>
         </div>
         <div class="ui error message"></div>
         <div class="ui right aligned container">
@@ -111,6 +111,25 @@
                       console.info(res.data)
                       this.findlist=res.data.data;
                     });
+
+
+            var id=location.hash.substring(1);
+
+            axios({
+              url:"/bbs/updata",
+              params:{
+
+                id:id
+              }
+            }).then(res=>{
+
+              this.title=res.data.data.title,
+                      this.content=res.data.data.content,
+                      this.boardid=res.data.data.boardid
+
+
+
+            })
 
           }
           ,

@@ -28,8 +28,8 @@
 	<br/>
 	<!--      回复、新帖        -->
 	<DIV>
-		<A href="post.html"><IMG src="image/reply.gif"  border="0" id="td_post1"></A>
-		<A href="post.html"><IMG src="image/post.gif"   border="0" id="td_post"></A>
+		<A href="bbs-input.html"><IMG src="image/reply.gif"  border="0" id="td_post1"></A>
+		<A href="bbs-input.html"><IMG src="image/post.gif"   border="0" id="td_post"></A>
 	</DIV>
 	<!--         翻 页         -->
 	<DIV>
@@ -52,7 +52,7 @@
 					<DIV class="tipad gray">
 						发表[<span>{{findlist.publishtime}} &nbsp;</span>]
 						最后修改:[<span>{{findlist.modifytime}}</span>]
-						<A :href="'post.html#'+findlist.topicid">[修改]</A>
+						<A :href="'bbs-updata.html#'+findlist.topicid">[修改]</A>
 					</DIV>
 				</TH>
 			</TR>

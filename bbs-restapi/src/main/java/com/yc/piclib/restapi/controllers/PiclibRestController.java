@@ -14,9 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
 @RestController
@@ -95,8 +94,11 @@ public class PiclibRestController {
     @RequestMapping(value = "/board/findAll", method = RequestMethod.GET)
     public CompletableFuture<String> findAll() {
         return CompletableFuture.supplyAsync(() -> {
+            System.out.println(1);
             List<BoardDomain> list = boardService.list();
+            System.out.println(2);
             Map<String,Object> map=new HashMap<>();
+            System.out.println(3);
             map.put("code",1);
             map.put("data",list);
             return new Gson().toJson(map);
@@ -184,20 +186,29 @@ public class PiclibRestController {
                 return new Gson().toJson(map);
             } catch (Exception e) {
                 Map<String, Object> map = new HashMap<>();
-                map.put("code", 1);
+                map.put("code", -1);
                 map.put("data", "用户名或密码错误，请重试");
                 String msg1=("登录失败");
-
                 System.out.println(msg1);
             }
             return null;
         });
     }
 
-    @RequestMapping(value = "topic/{id}" ,method = RequestMethod.GET)
-    public CompletableFuture<String> findById(@PathVariable Integer id) {
+    @RequestMapping(value = "/topic/{id}" ,method = RequestMethod.GET)
+    public CompletableFuture<String> findById1(@RequestParam Integer id) {
         return CompletableFuture.supplyAsync(() -> {
             List<TopicDomain> topic = topicService.findOne(id);
+            Map<String, Object> map = new HashMap<>();
+            map.put("code", 1);
+            map.put("data", topic);
+            return new Gson().toJson(map);
+        });
+    }
+    @RequestMapping(value = "/topicone" ,method = RequestMethod.GET)
+    public CompletableFuture<String> findById(@RequestParam Integer id) {
+        return CompletableFuture.supplyAsync(() -> {
+           TopicDomain topic = topicService.find(id);
             Map<String, Object> map = new HashMap<>();
             map.put("code", 1);
             map.put("data", topic);
@@ -218,19 +229,17 @@ public class PiclibRestController {
 
 
     //用户发布
-    @RequestMapping(value = "/list", method = RequestMethod.POST)
-    public CompletableFuture<String> push(@PathVariable Integer topicid, @PathVariable String title, @PathVariable String content, @PathVariable Timestamp publishtime,@PathVariable Timestamp modifytime,@PathVariable Integer uid,@PathVariable Integer boardid) {
+    @RequestMapping(value = "/push", method = RequestMethod.GET)
+    public CompletableFuture<String> push(@RequestParam String title, @RequestParam String content) {
         return CompletableFuture.supplyAsync(() -> {
             try {
                 TopicDomain topicDomain=new TopicDomain();
-                topicDomain.setTopicid(topicid);
                 topicDomain.setTitle(title);
                 topicDomain.setContent(content);
-                topicDomain.setPublishtime(publishtime);
-                topicDomain.setModifytime(modifytime);
-                topicDomain.setUid(uid);
-                topicDomain.setBoardid(boardid);
-
+                topicDomain.setUid(1);
+                topicDomain.setBoardid(1);
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+                topicDomain.setPublishtime(df.format(new Date()));
                 topicService.save(topicDomain);
 
                 Map<String, Object> map = new HashMap<>();
@@ -239,10 +248,11 @@ public class PiclibRestController {
                 return new Gson().toJson(map);
             } catch (Exception e) {
                 Map<String, Object> map = new HashMap<>();
-                map.put("code", 1);
+                map.put("code", -1);
                 map.put("data", "发布失败，请联系管理员！！！ ");
+                return new Gson().toJson(map);
+
             }
-            return null;
         });
     }
 
@@ -287,6 +297,18 @@ public class PiclibRestController {
             logger.info("删除->ID=" + id);
             Map<String, Object> map = new HashMap<>();
             map.put("code", "已删除评论");
+            return new Gson().toJson(map);
+        });
+    }
+
+
+    @RequestMapping(value = "/topic/updata/{id}" ,method = RequestMethod.POST)
+    public CompletableFuture<String> updata(@RequestBody TopicDomain topicDomain,@PathVariable Integer id) {
+        return CompletableFuture.supplyAsync(() -> {
+            topicService.updata(topicDomain,id);
+            Map<String, Object> map = new HashMap<>();
+            map.put("code", 1);
+            map.put("data", "修改成功");
             return new Gson().toJson(map);
         });
     }

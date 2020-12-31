@@ -12,8 +12,8 @@ public class TopicDomain extends PageDomain {
     private Integer topicid;   //注意: 对应的数据表中的字段名叫 book_id
     private String title;
     private String content;
-    private Timestamp publishtime;
-    private Timestamp modifytime;
+    private String publishtime;
+    private String modifytime;
     private Integer uid;
     private Integer boardid;
 
@@ -24,7 +24,7 @@ public class TopicDomain extends PageDomain {
     private String extension;
     private String realPath;
 
-    public TopicDomain(Integer topicid, String title, String content, Timestamp publishtime, Timestamp modifytime, Integer uid, Integer boardid) {
+    public TopicDomain(Integer topicid, String title, String content, String publishtime, String modifytime, Integer uid, Integer boardid) {
         this.topicid = topicid;
         this.title = title;
         this.content = content;

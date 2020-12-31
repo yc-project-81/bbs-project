@@ -20,9 +20,9 @@ public class PiclibFuture {
 
 
     @Async
-   public CompletableFuture<String> findAll( String boardname, String parentname) {
+   public CompletableFuture<String> findAll( ) {
         return CompletableFuture.supplyAsync(() -> {
-            return piclibRestService.findAll( boardname,parentname);
+            return piclibRestService.findAll( );
         });
     }
 
@@ -30,6 +30,14 @@ public class PiclibFuture {
     public CompletableFuture<String> TopicfindAll( ) {
         return CompletableFuture.supplyAsync(() -> {
             return piclibRestService.TopicfindAll();
+        });
+    }
+
+
+    @Async
+    public CompletableFuture<String> Topicfindone( Integer id ) {
+        return CompletableFuture.supplyAsync(() -> {
+            return piclibRestService.Topicfindone(id);
         });
     }
 
@@ -83,6 +91,20 @@ public class PiclibFuture {
     public CompletableFuture<String> reg(UserDomain userDomain) {
         return CompletableFuture.supplyAsync(() -> {
             return piclibRestService.reg(userDomain);
+        });
+    }
+
+    @Async
+    public CompletableFuture<String> push(TopicDomain topicDomain) {
+        return CompletableFuture.supplyAsync(() -> {
+            return piclibRestService.push(topicDomain);
+        });
+    }
+
+    @Async
+    public CompletableFuture<String> updata(TopicDomain topicDomain,Integer id) {
+        return CompletableFuture.supplyAsync(() -> {
+            return piclibRestService.updata(topicDomain,id);
         });
     }
 }

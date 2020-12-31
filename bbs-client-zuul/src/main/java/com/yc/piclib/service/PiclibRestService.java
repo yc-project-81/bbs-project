@@ -21,15 +21,42 @@ public class PiclibRestService {
     private BBSClient piclibClient;
 
 
+
+
+    @HystrixCommand(fallbackMethod = "updataFallback")
+    public String updata(TopicDomain topicDomain,Integer id) {
+        return piclibClient.updata(topicDomain,id);
+    }
+
+    private String updataFallback(TopicDomain topicDomain,Integer id) {
+        Map map = new HashMap();
+        map.put("code", "-1");
+        map.put("msg", "服务异常，无法修改" + id);
+        return new Gson().toJson(map);
+    }
+
+    @HystrixCommand(fallbackMethod = "TopicfindoneFallback")
+    public String Topicfindone(Integer id){
+        return piclibClient.findOne(id);
+    }
+
+    private String TopicfindoneFallback(Integer id) {
+        Map map = new HashMap();
+        map.put("code", "-1");
+        map.put("msg", "查询服务异常");
+        return new Gson().toJson(map);
+    }
+
+
     @HystrixCommand(fallbackMethod = "findAllFallback")
-   public String findAll(String boardname, String parentname) {
-       return piclibClient.findAll( boardname,parentname);
+   public String findAll(){
+       return piclibClient.findAll();
    }
 
-   private String findAllFallback( String boardname, String parentname) {
+   private String findAllFallback() {
        Map map = new HashMap();
         map.put("code", "-1");
-       map.put("msg", "服务异常");
+       map.put("msg", "查询服务异常");
        return new Gson().toJson(map);
    }
 
@@ -126,7 +153,20 @@ public class PiclibRestService {
     private String findIdFallback(Integer id) {
         Map map = new HashMap();
         map.put("code", "-1");
-        map.put("msg", "服务异常，无法找到" + id);
+        map.put("msg", "服务异常，无法找到2" + id);
+        return new Gson().toJson(map);
+    }
+
+
+    @HystrixCommand(fallbackMethod = "pushFallback")
+    public String push(TopicDomain topicDomain) {
+        return piclibClient.push(topicDomain.getTitle(),topicDomain.getContent());
+    }
+
+    private String pushFallback(TopicDomain topicDomain) {
+        Map map = new HashMap();
+        map.put("code", "-1");
+        map.put("msg", "用户名或密码错误");
         return new Gson().toJson(map);
     }
 }

@@ -59,8 +59,8 @@ public class BbsController {
     }
 
     @RequestMapping(value = "/findAll", method = RequestMethod.POST)
-    public CompletableFuture<String> findAll( String boardname, String parentname) {
-        return bbsFuture.findAll(boardname,parentname);
+    public CompletableFuture<String> findAll() {
+        return bbsFuture.findAll();
     }
 
     @RequestMapping(value = "topic/findAll", method = RequestMethod.POST)
@@ -78,9 +78,32 @@ public class BbsController {
         return bbsFuture.findById(id);
     }
 
+    @RequestMapping(value = "/updata", method = RequestMethod.GET)
+    public CompletableFuture<String> updata(@RequestParam Integer id) {
+        return bbsFuture.Topicfindone(id);
+    }
+
     @RequestMapping(value = "/id/{id}", method = RequestMethod.POST)
     public CompletableFuture<String> findId(@PathVariable Integer id) {
         return bbsFuture.findId(id);
+    }
+
+    @RequestMapping(value = "/push", method = RequestMethod.GET)
+    public CompletableFuture<String> push(@RequestParam String title ,@RequestParam String content) {
+        TopicDomain topicDomain=new TopicDomain();
+        topicDomain.setTitle(title);
+        topicDomain.setContent(content);
+        return bbsFuture.push(topicDomain);
+    }
+
+    @RequestMapping(value = "/topic/updata/{id}",method = RequestMethod.POST)
+    public CompletableFuture<String> updata(@RequestParam String title, @RequestParam String content,@RequestParam Integer uid,@RequestParam Integer boardid,@RequestParam Integer id ) {
+        TopicDomain topicDomain=new TopicDomain();
+        topicDomain.setTitle(title);
+        topicDomain.setContent(content);
+        topicDomain.setUid(2);
+        topicDomain.setBoardid(boardid);
+        return bbsFuture.updata(topicDomain,id);
     }
 
 //    @RequestMapping(value = "/save", method = RequestMethod.POST)

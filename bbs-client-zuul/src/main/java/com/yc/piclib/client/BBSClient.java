@@ -23,11 +23,22 @@ public interface BBSClient {
 //    @RequestMapping(method = RequestMethod.GET, value = "/yc-api/bbs-proxy/piclib/{id}")
 //    String findById(@RequestParam("id") Integer id);
 
+    @RequestMapping(method = RequestMethod.POST, value = "/yc-api/bbs-proxy/topic/updata/{id}",
+            consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    String updata(@RequestBody TopicDomain topicDomain,@RequestParam("id") Integer id);
+
+
+    @RequestMapping(method = RequestMethod.GET, value = "/yc-api/bbs-proxy/bbs/topicone",
+            consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    String findOne(@RequestParam("id") Integer id);
+
+
     @RequestMapping(method = RequestMethod.GET, value = "/yc-api/bbs-proxy/bbs/board/findAll",
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    String findAll(@RequestParam("boardname") String boardname,
-                   @RequestParam("parentname") String parentname);
+    String findAll();
 
     @RequestMapping(method = RequestMethod.GET, value = "/yc-api/bbs-proxy/bbs/topic/findAll",
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
@@ -62,6 +73,9 @@ public interface BBSClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/yc-api/bbs-proxy/bbs/topic/id/{id}")
     String findId(@RequestParam("id") Integer id);
+
+    @RequestMapping(method = RequestMethod.GET, value = "/yc-api/bbs-proxy/bbs/push")
+    String push(@RequestParam("title") String title,@RequestParam("content") String content);
 
 }
 
